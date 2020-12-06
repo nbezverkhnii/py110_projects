@@ -42,7 +42,7 @@ def re_parser(text: str) -> list:
     Парсер текста.    
     Разбивает текст на отдельные книги.
     Отдельные книги разбивает на категории.
-    Сортирует полученный список словарей словарь 
+    Сортирует полученный список словарей
     в порядке убывания их популярности по ключу 'recommended'
     
     Parameters:
@@ -58,7 +58,7 @@ def re_parser(text: str) -> list:
         for items in ITEMS_PATTERN.finditer(book):
             books_item_list.append(items.groupdict())
             
-    result = sorted(books_item_list, 
+    result = sorted(books_item_list,  
                     key=lambda x: float(x['recommended']), 
                     reverse=True)
     
@@ -94,6 +94,7 @@ def main() -> None:
     with open(filename, 'rt') as input_file:
         text = input_file.read()
         
+        # Потому что необходимо записать .json файл
         name, ext = os.path.splitext(filename)
         output_filename = name + '.json'
         
@@ -108,7 +109,6 @@ def main() -> None:
     
             
 if __name__ == '__main__':
-    
     try:
         main()
     except FileNotFoundError:
