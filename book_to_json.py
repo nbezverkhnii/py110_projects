@@ -42,7 +42,8 @@ def re_parser(text: str) -> list:
     Парсер текста.    
     Разбивает текст на отдельные книги.
     Отдельные книги разбивает на категории.
-    Сортирует полученный словарь в порядке убывания их популярности
+    Сортирует полученный список словарей словарь 
+    в порядке убывания их популярности по ключу 'recommended'
     
     Parameters:
     text: str - строка, которая содежит весь текст файла, 
@@ -79,8 +80,7 @@ def create_json(output_filename: str, result_books_list: list, indent: int) -> N
         
 def main() -> None:
     """
-    Парсер текста
-    
+    Парсер текста.
     Принимает агрументы командной строки.
     Открывает и читает текст из файла.
     Переименовывает выходной файл, если это нужно.
@@ -103,8 +103,8 @@ def main() -> None:
                 output_name += '.json'
             output_filename = output_name
             
-    result_books_list = re_parser(text)
-    create_json(output_filename, result_books_list, indent)
+        result_books_list = re_parser(text)
+        create_json(output_filename, result_books_list, indent)
     
             
 if __name__ == '__main__':
