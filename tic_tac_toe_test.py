@@ -25,7 +25,6 @@ def print_board(matrix: List[str]) -> None:
         | | | |
         | | | |
     """
-    global SIZE
     
     row_list = [matrix[i*SIZE:(i+1)*SIZE] for i in range(SIZE)] #row_list[0] = [' ', ' ', ' ']
 
@@ -64,9 +63,7 @@ def input_value(user: str, last_input: Set[str]) -> int:
     number: int
         Число, введенное пользователем.
     
-    """
-    global SIZE
-    
+    """    
     number = input(f'Пользователь {user}, введите число ')
     # x*x быстрее, чем x**2
     # преобразован к типу set, чтобы быстрее осуществлять поиск элементов
@@ -110,9 +107,7 @@ def cheak_win(user: str, board_matrix: List[str], step: int) -> bool:
     bool
         Если победа - True, если нет - False.
 
-    """
-    global SIZE
-    
+    """   
     # Победа - кобимнация одинаковых символов длиной SIZE
     win_combination = [user]*SIZE #['X', 'X', 'X'] 
     win_case_list = []
@@ -149,8 +144,6 @@ def cheak_pass(step: int, win: bool) -> None:
     win: bool
         Была ли победа на сделанном ходу 
     """
-    global SIZE
-
     if step == SIZE*SIZE and not win:
         print('Ничья!\n')
 
@@ -181,7 +174,6 @@ def tic() -> None:
     user -  выступает одновременно и как "имя" игрока, и как символ, 
                           которм заполняется выбранное играком поле
     """
-    global SIZE
     board_matrix = [' ' for _ in range(SIZE*SIZE)]
     step = 0
     last_input = set()
