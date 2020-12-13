@@ -78,7 +78,6 @@ def subparser_csv(subparsers) -> Callable:
                                default=',',
                                help='Разделитель элементов в строке')
     
-    
     return csv_subparser
 
 
@@ -217,6 +216,7 @@ def create_csv(output_file: str,
     
 def main() -> None:
     """
+    Основная функция программы 
     """
     parser = create_parser()
     args = parser.parse_args()
